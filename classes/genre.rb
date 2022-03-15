@@ -1,8 +1,8 @@
-class MusicAlbum
-
-    attr_accessor :on_spotify
-
-  def initialize(on_spotify: false)
-    @on_spotify = on_spotify
-  end
+class Genre
+    attr_accessor :name
+    def initialize(date, name)
+        super(date)
+        @name = name
+        @items = []
+    end
 end
