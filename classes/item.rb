@@ -2,8 +2,14 @@ class Item
   attr_reader :genre, :author, :label, :source
   attr_accessor :publish_date
 
-  def initialize(date, archived: false)
+  def initialize(date, label = "n/a", author = "n/a", 
+    genre = "n/a", source = "n/a", archived: false)
+
     @id = Random.rand(1..500)
+    @author = author
+    @label = label
+    @genre = genre
+    @source = source
     @publish_date = date
     @archived = archived
   end
@@ -36,10 +42,6 @@ class Item
 
   def can_be_archived?
     current_year = Time.new.year
-    if current_year - @publish_date > 10
-      puts true
-    else
-      puts false
-    end
+    current_year - @publish_date > 10
   end
 end

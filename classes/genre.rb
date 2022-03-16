@@ -10,8 +10,8 @@ class Genre
         @items = []
     end
 
-    def add_item(item)
-        @items = Item.new(item)
+    def add_item(date, label, author)
+        @items = Item.new(date, label, author)
         @items.genre = self
     end
 
