@@ -14,6 +14,19 @@ class App
 
   def options_cases(user_input)
     case user_input
+    when '1'..'6'
+      other_option_cases(user_input)
+    when '7'
+      add_book
+    when '8'
+      add_music_album
+    when '9'
+      add_game
+    end
+  end
+
+  def other_option_cases(action)
+    case action
     when '1'
       list_all_books
     when '2'
@@ -26,19 +39,14 @@ class App
       list_all_labels
     when '6'
       list_all_authors
-    when '7'
-      add_book
-    when '8'
-      add_music_album
-    when '9'
-      add_game
     end
   end
 
   def list_all_books
     puts 'There are no books yet! Please add books.' if @books.empty?
     @books.each do |book|
-      puts "Title: #{book.title}, Publisher: #{book.publisher}, cover_state: #{book.cover_state}, Publish Date: #{book.publish_date}"
+      puts "Title: #{book.title}, Publisher: #{book.publisher}"
+      puts "cover_state: #{book.cover_state}, Publish Date: #{book.publish_date}"
     end
     sleep 0.75
   end
