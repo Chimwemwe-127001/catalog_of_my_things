@@ -33,8 +33,7 @@ class Item
   end
 
   def add_author(author)
-    @author = author
-    @author.add_item(self) unless @author.items.include?(self)
+    self.author = (author)
   end
 
   private
