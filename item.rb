@@ -32,10 +32,6 @@ class Item
     @archived = can_be_archived?
   end
 
-  def add_author(author)
-    self.author = (author)
-  end
-
   private
 
   def can_be_archived?
