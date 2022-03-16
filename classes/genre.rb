@@ -12,7 +12,7 @@ class Genre
 
   def add_item(item)
     @items << item
-    item.author = self
+    item.genre = self
   end
 
   def music_album
