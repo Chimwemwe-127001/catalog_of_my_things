@@ -1,6 +1,7 @@
 require_relative './classes/book'
 require './classes/game'
 require './classes/author'
+require './classes/lable'
 
 class App
   def initialize
@@ -139,5 +140,17 @@ class App
     last_name = gets.chomp
 
     [first_name, last_name]
+  end
+
+  def add_label
+    print 'Enter the Label title: '
+    title = gets.chomp
+
+    print 'Enter the Label color: '
+    color = gets.chomp
+
+    @labels << Label.new(title: title, color: color)
+    puts 'Label created successfully'
+    sleep 0.75
   end
 end
