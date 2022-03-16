@@ -25,7 +25,7 @@ class App
     when '5'
       list_all_labels
     when '6'
-      list_authors
+      list_all_authors
     when '7'
       add_book
     when '8'
