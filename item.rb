@@ -29,7 +29,11 @@ class Item
   end
 
   def move_to_archive
-    @archived = true if can_be_archived?
+    if can_be_archived?
+      @archived = true 
+    else 
+      @archived = false
+    end
   end
 
   def add_author(author)
