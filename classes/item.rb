@@ -4,10 +4,6 @@ class Item
 
   def initialize(date, label, author, genre = 'n/a', archived: false)
     @id = Random.rand(1..500)
-    @author = author
-    @label = label
-    @genre = genre
-    @source = source
     @publish_date = date
     @archived = archived
   end
