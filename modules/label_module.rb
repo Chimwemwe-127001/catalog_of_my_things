@@ -17,7 +17,7 @@ module LabelsDataController
   def save_labels
     data = []
     @labels.each do |label|
-      data.push({title: label.title, color: label.color })
+      data.push({ title: label.title, color: label.color })
     end
     File.write('./json/labels.json', JSON.generate(data))
   end
