@@ -1,6 +1,6 @@
 # CATALOG OF MY THINGS
 
-> iNFOR COMING SOON
+> Command line interface app that give you the ability to add books games authors source and label of items and preserve that data inside json files
 
 ## Project screenshots
 
@@ -62,6 +62,12 @@ gem install colorize
 ```
 
 ## Author
+
+👤 **Youmari**
+
+- GitHub: [@youmari](https://github.com/youmari)
+- Twitter: [@yf_omari](https://twitter.com/yf_omari)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/yassine-omari-945114190/)
 
 👤 **Mongare S.**
 
