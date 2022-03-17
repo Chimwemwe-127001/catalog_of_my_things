@@ -75,6 +75,10 @@ gem install colorize
 - Twitter: [@twitterhandle](https://twitter.com/sam_mongare)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/sammy-mongare-b8288310b/)
 
+👤 **Chimwemwe-127001**
+
+- GitHub: [@githubhandle](https://github.com/Chimwemwe-127001/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
