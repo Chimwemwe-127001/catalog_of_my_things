@@ -17,10 +17,8 @@ class Genre
   end
 
   def music_album
-    @items.each do |song| 
-        if song.genre == self
-        return song.move_to_archive, @id , song.genre.name 
-        end
+    @items.each do |song|
+      return song.move_to_archive, @id, song.genre.name if song.genre == self
     end
   end
 end
