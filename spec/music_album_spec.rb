@@ -2,7 +2,7 @@ require './classes/music_album'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new(2010, true)
+    @music_album = MusicAlbum.new(2010, on_spotify: true)
   end
 
   it 'should detect the music_album publish_date' do
