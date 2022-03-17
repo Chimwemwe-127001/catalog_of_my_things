@@ -1,6 +1,5 @@
 require_relative '../classes/book'
 require 'json'
-require 'date'
 
 module BooksDataController
   def load_books
@@ -9,7 +8,7 @@ module BooksDataController
     if File.exist?(file) && File.read(file) != ''
       JSON.parse(File.read(file)).each do |element|
         data.push(Book.new(title: element['title'], publisher: element['publisher'],
-                           cover_state: element['cover_state'], publish_date: Date.parse(element['publish_date'])))
+                           cover_state: element['cover_state'], publish_date: element['publish_date']))
       end
     end
     data
