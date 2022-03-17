@@ -1,4 +1,13 @@
+require './classes/music_album'
+require './classes/genre'
+require_relative 'prompts'
+require 'colorize'
+require 'json'
+
 class App
+
+  include Prompts
+
   def initialize
     @books = []
     @music_albums = []
@@ -21,7 +30,13 @@ class App
 
   def list_all_books; end
 
-  def list_all_music_album; end
+  def list_all_music_album
+    if @music_albums.length.positive?
+      puts(@music_albums.map { |al| "[#{al.class.name}] Publish Date: #{al.publish_date}, ID: #{al.id}, on_spotify: #{al.on_spotify}".yellow })
+    else
+      puts 'No albums in the library yet!'.red
+    end
+  end
 
   def list_all_games; end
 
@@ -33,7 +48,17 @@ class App
 
   def add_book; end
 
-  def add_music_album; end
+  def add_music_album
+    date = one_line_prompt('Date [YYYY/MM/DD]: ').to_i
+    input = one_line_prompt('Album on spotify? [Yes/No]: ')
+    on_spotify = %w[Yes yes YES].include?(input)
+    @music_albums.push(MusicAlbum.new(date, on_spotify: on_spotify))
+    f = File.new('./data/music_albums.json', 'w')
+    jjn = @music_albums.map { |a| { date: a.publish_date, on_spotify: a.on_spotify } }
+    f.puts(JSON.pretty_generate(jjn))
+    f.close
+    puts 'ALBUM CREATED SUCCESSFULLY'.green
+  end
 
   def add_game; end
 end
