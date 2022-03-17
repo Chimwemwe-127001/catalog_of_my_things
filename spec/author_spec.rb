@@ -3,7 +3,7 @@ require_relative '../classes/author'
 
 describe Author do
   before :each do
-    @author = Author.new("Jeff", "Rowling")
+    @author = Author.new('Jeff', 'Rowling')
   end
 
   it 'should detect the first name of the author' do
@@ -15,7 +15,7 @@ describe Author do
   end
 
   it 'should detect the author id' do
-    author = Author.new("Chinua", "Achebe")
+    author = Author.new('Chinua', 'Achebe')
     allow(author).to receive(:id) { 1 }
     expect(author.id).to eq 1
   end
