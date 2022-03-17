@@ -7,6 +7,7 @@ require './classes/genre'
 require './modules/book_module'
 require './modules/label_module'
 require './modules/game_module'
+require './modules/author_module'
 require_relative 'prompts'
 require 'json'
 
