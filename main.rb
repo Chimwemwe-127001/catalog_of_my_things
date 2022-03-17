@@ -63,6 +63,8 @@ class Main
     end
     @app.save_books
     @app.save_labels
+    @app.save_games
+    @app.save_authors
     puts 'Thank you for using our application'.yellow
   end
 end
