@@ -60,7 +60,7 @@ class App
   def list_all_music_album; end
 
   def list_all_games
-    puts 'There are no game please try to add one !' if @games.count.zero?
+    puts 'There are no games please try to add one !' if @games.count.zero?
     @games.each do |game|
       puts "#{game.multiplayer}, Last played at: #{game.last_played_at}, Publish date: #{game.publish_date}"
     end
