@@ -2,11 +2,16 @@ require_relative './classes/book'
 require './classes/game'
 require './classes/author'
 require './classes/lable'
+require './classes/music_album'
+require './classes/genre'
 require './modules/book_module'
 require './modules/label_module'
 require './modules/game_module'
+require_relative 'prompts'
+require 'json'
 
 class App
+  include Prompts
   include LabelsDataController
   include BooksDataController
   include GamesDataController
