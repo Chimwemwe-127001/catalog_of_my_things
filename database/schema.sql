@@ -60,3 +60,18 @@ CREATE TABLE books (
     FOREIGN KEY author_id REFERENCES authors (id),
     FOREIGN KEY source_id REFERENCES sources (id)
 );
+
+CREATE TABLE musicAlbum (
+    id  INT,
+    publish_date DATE NOT NULL,
+    on_spotify BOOLEAN NOT NULL,
+    genre_id INT,
+    lable_id INT,
+    source_id INT,
+    author_id INT,
+    archived BOOLEAN NOT NULL,
+    FOREIGN KEY genre_id REFERENCES genres (id),
+    FOREIGN KEY lable_id REFERENCES lables (id),
+    FOREIGN KEY author_id REFERENCES authors (id),
+    FOREIGN KEY source_id REFERENCES sources (id)
+);
