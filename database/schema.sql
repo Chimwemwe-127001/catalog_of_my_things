@@ -62,7 +62,7 @@ CREATE TABLE books (
 );
 
 CREATE TABLE musicAlbum (
-    id  INT,
+    id  INT GENERATED ALWAYS AS IDENTITY,
     publish_date DATE NOT NULL,
     on_spotify BOOLEAN NOT NULL,
     genre_id INT,
@@ -70,6 +70,7 @@ CREATE TABLE musicAlbum (
     source_id INT,
     author_id INT,
     archived BOOLEAN NOT NULL,
+    PRIMARY KEY(id)
     FOREIGN KEY genre_id REFERENCES genres (id),
     FOREIGN KEY lable_id REFERENCES lables (id),
     FOREIGN KEY author_id REFERENCES authors (id),
