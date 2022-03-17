@@ -70,7 +70,7 @@ CREATE TABLE musicAlbum (
     source_id INT,
     author_id INT,
     archived BOOLEAN NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
     FOREIGN KEY genre_id REFERENCES genres (id),
     FOREIGN KEY lable_id REFERENCES lables (id),
     FOREIGN KEY author_id REFERENCES authors (id),
