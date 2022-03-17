@@ -1,4 +1,5 @@
 require './item'
+require_relative 'music_album'
 
 class Genre
   attr_accessor :name
@@ -16,6 +17,8 @@ class Genre
   end
 
   def music_album
-    @items.select { |song| song.genre == self }
+    @items.each do |song|
+      return song.move_to_archive, @id, song.genre.name if song.genre == self
+    end
   end
 end

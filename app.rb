@@ -1,11 +1,16 @@
+require './classes/music_album'
+require './classes/genre'
+require_relative 'prompts'
 require_relative './classes/book'
 require './classes/game'
 require './classes/author'
 require './classes/lable'
 require './modules/book_module'
 require './modules/label_module'
+require 'json'
 
 class App
+  include Prompts
   include LabelsDataController
   include BooksDataController
 
@@ -18,36 +23,6 @@ class App
     @authors = []
   end
 
-  def options_cases(user_input)
-    case user_input
-    when '1'..'6'
-      other_option_cases(user_input)
-    when '7'
-      add_book
-    when '8'
-      add_music_album
-    when '9'
-      add_game
-    end
-  end
-
-  def other_option_cases(action)
-    case action
-    when '1'
-      list_all_books
-    when '2'
-      list_all_music_album
-    when '3'
-      list_all_games
-    when '4'
-      list_all_genres
-    when '5'
-      list_all_labels
-    when '6'
-      list_all_authors
-    end
-  end
-
   def list_all_books
     puts 'There are no books yet! Please add books.' if @books.empty?
     @books.each do |book|
@@ -57,7 +32,15 @@ class App
     sleep 0.75
   end
 
-  def list_all_music_album; end
+  def list_all_music_album
+    if @music_albums.length.positive?
+      puts(@music_albums.map do |al|
+             "[#{al.class.name}] Publish Date: #{al.publish_date}, ID: #{al.id}, on_spotify: #{al.on_spotify}".yellow
+           end)
+    else
+      puts 'No albums in the library yet!'.red
+    end
+  end
 
   def list_all_games
     puts 'There are no games please try to add one !' if @games.count.zero?
@@ -66,7 +49,13 @@ class App
     end
   end
 
-  def list_all_genres; end
+  def list_all_genres
+    if @genres.length.positive?
+      puts(@genres.map { |al| "[#{al.class.name}] #{al.name}, ID: #{al.id}".yellow })
+    else
+      puts 'No new genres added yet!'.red
+    end
+  end
 
   def list_all_labels
     puts 'There are no labels yet!' if @labels.empty?
@@ -101,7 +90,47 @@ class App
     sleep 0.75
   end
 
-  def add_music_album; end
+  def add_music_album
+    date = one_line_prompt('Date [YYYY]: ').to_i
+    album_genre = one_line_prompt('Genre: ')
+    input = one_line_prompt('Album on spotify? [Yes/No]: ')
+    on_spotify = %w[Yes yes YES].include?(input)
+    @music_albums.push(MusicAlbum.new(date, on_spotify: on_spotify))
+    @genres.push(Genre.new(album_genre))
+
+    f = File.new('./json/music_albums.json', 'w')
+    album_storage = @music_albums.map { |a| { date: a.publish_date, on_spotify: a.on_spotify } }
+    f.puts(JSON.pretty_generate(album_storage))
+    f.close
+
+    j = File.new('./json/genres.json', 'w')
+    genre_storage = @genres.map { |g| { name: g.name } }
+    j.puts(JSON.pretty_generate(genre_storage))
+    j.close
+
+    puts 'ALBUM CREATED SUCCESSFULLY'.green
+  end
+
+  def load_album_genre
+    if File.exist?('./json/music_albums.json')
+      file = File.read('./json/music_albums.json')
+      data_hash = JSON.parse(file)
+      data_hash.map do |alb|
+        @music_albums.push(MusicAlbum.new(alb['date'], on_spotify: alb['on_spotify']))
+      end
+    else
+      puts 'No albums in the library yet!'.red
+    end
+    if File.exist?('./json/genres.json')
+      file = File.read('./json/genres.json')
+      genre_data = JSON.parse(file)
+      genre_data.map do |gen|
+        @genres.push(Genre.new(gen['name']))
+      end
+    else
+      puts 'No new genres added yet!'.red
+    end
+  end
 
   def add_game
     multiplayer, last_played_at = game_input

@@ -1,5 +1,5 @@
 class Item
-  attr_reader :genre, :author, :label, :source
+  attr_reader :genre, :author, :label, :source, :id
   attr_accessor :publish_date
 
   def initialize(publish_date)
