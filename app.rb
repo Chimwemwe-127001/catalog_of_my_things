@@ -1,26 +1,24 @@
-require './classes/music_album'
-require './classes/genre'
-require_relative 'prompts'
 require_relative './classes/book'
 require './classes/game'
 require './classes/author'
 require './classes/lable'
 require './modules/book_module'
 require './modules/label_module'
-require 'json'
+require './modules/game_module'
 
 class App
-  include Prompts
   include LabelsDataController
   include BooksDataController
+  include GamesDataController
+  include AuthorsDataController
 
   def initialize
     @books = load_books
     @music_albums = []
-    @games = []
+    @games = load_games
     @genres = []
     @labels = load_labels
-    @authors = []
+    @authors = load_authors
   end
 
   def list_all_books
