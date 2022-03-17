@@ -1,6 +1,10 @@
 [
   {
-    "date": 2015,
+    "date": 2020,
     "on_spotify": true
+  },
+  {
+    "date": 2020,
+    "on_spotify": false
   }
 ]

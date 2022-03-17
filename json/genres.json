@@ -1,8 +1,11 @@
 [
   {
-    "genres": "Country"
+    "name": "Afrobeats"
   },
   {
-    "genres": "Rock"
+    "name": "Soul"
+  },
+  {
+    "name": "Rock"
   }
 ]
