@@ -5,7 +5,7 @@ class Item
   def initialize(date)
     @id = Random.rand(1..500)
     @publish_date = date
-    @archived = move_to_archive
+    @archived = false
   end
 
   def genre=(genre)
