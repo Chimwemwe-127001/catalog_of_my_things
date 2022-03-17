@@ -1,5 +1,7 @@
+require_relative './classes/book'
 require './classes/game'
 require './classes/author'
+require './classes/lable'
 
 class App
   def initialize
@@ -11,18 +13,44 @@ class App
     @authors = []
   end
 
-  def handle_action(option)
-    action_input = { 1 => list_all_books, 2 => list_all_music_album, 3 => list_all_games, 4 => list_all_genres,
-                     5 => list_all_labels, 6 => list_all_authors, 7 => add_book, 8 => add_music_album, 9 => add_game }
-    case option
-    when 1..9
-      action_input[option]
-    else
-      puts 'Please put a number between 1 and 10'
+  def options_cases(user_input)
+    case user_input
+    when '1'..'6'
+      other_option_cases(user_input)
+    when '7'
+      add_book
+    when '8'
+      add_music_album
+    when '9'
+      add_game
     end
   end
 
-  def list_all_books; end
+  def other_option_cases(action)
+    case action
+    when '1'
+      list_all_books
+    when '2'
+      list_all_music_album
+    when '3'
+      list_all_games
+    when '4'
+      list_all_genres
+    when '5'
+      list_all_labels
+    when '6'
+      list_all_authors
+    end
+  end
+
+  def list_all_books
+    puts 'There are no books yet! Please add books.' if @books.empty?
+    @books.each do |book|
+      puts "Title: #{book.title}, Publisher: #{book.publisher}"
+      puts "cover_state: #{book.cover_state}, Publish Date: #{book.publish_date}"
+    end
+    sleep 0.75
+  end
 
   def list_all_music_album; end
 
@@ -35,7 +63,13 @@ class App
 
   def list_all_genres; end
 
-  def list_all_labels; end
+  def list_all_labels
+    puts 'There are no labels yet!' if @labels.empty?
+    @labels.each do |label|
+      puts "Title: #{label.title}, Color: #{label.color}"
+    end
+    sleep 0.75
+  end
 
   def list_all_authors
     @authors.each do |author|
@@ -43,7 +77,24 @@ class App
     end
   end
 
-  def add_book; end
+  def add_book
+    print 'Enter the book title: '
+    title = gets.chomp
+
+    print 'Enter the book publisher: '
+    publisher = gets.chomp
+
+    print 'Enter the book cover state(good or bad): '
+    cover_state = gets.chomp
+
+    print 'Date of publish [Enter date in format: (yyyy-mm-dd)]: '
+    publish_date = gets.chomp
+
+    book = Book.new(title: title, publisher: publisher, cover_state: cover_state, publish_date: publish_date)
+    @books << book
+    puts 'Book created successfully'
+    sleep 0.75
+  end
 
   def add_music_album; end
 
@@ -89,5 +140,17 @@ class App
     last_name = gets.chomp
 
     [first_name, last_name]
+  end
+
+  def add_label
+    print 'Enter the Label title: '
+    title = gets.chomp
+
+    print 'Enter the Label color: '
+    color = gets.chomp
+
+    @labels << Label.new(title: title, color: color)
+    puts 'Label created successfully'
+    sleep 0.75
   end
 end
