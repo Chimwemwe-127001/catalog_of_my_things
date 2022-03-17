@@ -21,11 +21,17 @@ CREATE TABLE games (
     author_id INT ,
     publish_date DATE NOT NULL,
     archived BOOLEAN NOT NULL,
-    FOREIGN KEY genre_id REFERENCES genre (id),
-    FOREIGN KEY lable_id REFERENCES lable (id),
-    FOREIGN KEY author_id REFERENCES author (id),
-    FOREIGN KEY source_id REFERENCES source (id)
+    FOREIGN KEY genre_id REFERENCES genres (id),
+    FOREIGN KEY lable_id REFERENCES lables (id),
+    FOREIGN KEY author_id REFERENCES authors (id),
+    FOREIGN KEY source_id REFERENCES sources (id)
 
+);
+
+CREATE TABLE authors (
+    id INT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE labels (
