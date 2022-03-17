@@ -81,7 +81,9 @@ gem install colorize
 
 👤 **Chimwemwe-127001**
 
-- GitHub: [@githubhandle](https://github.com/Chimwemwe-127001/)
+- GitHub: [@githubhandle](https://github.com/Chimwemwe-127001)
+- Twitter: [@twitterhandle](https://www.linkedin.com/in/chimwewme-sinyinza/)
+- LinkedIn: [LinkedIn](https://twitter.com/chimwewme)
 
 ## 🤝 Contributing
 
