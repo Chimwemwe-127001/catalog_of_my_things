@@ -2,11 +2,13 @@
 
 > Command line interface app that give you the ability to add books games authors source and label of items and preserve that data inside json files
 
+> ***[Here](https://drive.google.com/file/d/1fy9sW9ahglFJI3wEq82b2c3llHmmriJ1/view?usp=sharing)*** *you will find the video of our project presentaion*
+
 ## Project screenshots
 
-![screenshot](./app_screenshot.png)
-
-![screenshot](./app_screenshot2.png)
+  Screenshot 1                              |  Screenshot 2
+:------------------------------------------:|:------------------------------------------:
+![screenshot](./app_screenshot.png)         |   ![screenshot](./app_screenshot2.png)
 
 Additional description about the project and its features.
 
