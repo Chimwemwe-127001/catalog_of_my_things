@@ -28,6 +28,8 @@ class Main
       input = gets.chomp
       @app.options_cases(input)
     end
+    @app.save_books
+    @app.save_labels
     puts 'Thank you for using our application'
   end
 end

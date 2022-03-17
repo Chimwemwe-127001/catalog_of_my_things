@@ -2,14 +2,19 @@ require_relative './classes/book'
 require './classes/game'
 require './classes/author'
 require './classes/lable'
+require './modules/book_module'
+require './modules/label_module'
 
 class App
+  include LabelsDataController
+  include BooksDataController
+
   def initialize
-    @books = []
+    @books = load_books
     @music_albums = []
     @games = []
     @genres = []
-    @labels = []
+    @labels = load_labels
     @authors = []
   end
 
