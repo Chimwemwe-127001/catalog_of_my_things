@@ -22,5 +22,10 @@ describe MusicAlbum do
       @music_album.on_spotify = false
       expect(@music_album.send(:can_be_archived?)).to be false
     end
+
+    it 'should return true' do
+      @music_album.on_spotify = true
+      expect(@music_album.send(:can_be_archived?)).to be true
+    end
   end
 end
